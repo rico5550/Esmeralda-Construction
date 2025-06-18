@@ -17,15 +17,15 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-24 bg-gray-800">
+    <section id="about" className="py-12 bg-gray-800">
       <div className="container mx-auto px-6 lg:px-12">
         {/* Section Header */}
-        <div className="text-center mb-20">
-          <h2 className="text-4xl lg:text-6xl font-light text-white mb-8">
+        <div className="text-center mb-12">
+          <h2 className="text-2xl lg:text-3xl font-light text-white mb-4">
             <em>Crafting excellence</em> through <em>visionary design</em>
           </h2>
-          <div className="max-w-4xl mx-auto">
-            <p className="text-xl lg:text-2xl text-gray-300 font-light leading-relaxed">
+          <div className="max-w-3xl mx-auto">
+            <p className="text-base lg:text-lg text-gray-300 font-light leading-relaxed">
               For over 15 years, Esmeralda Construction has stood as a beacon of architectural excellence,
               transforming dreams into tangible masterpieces that define luxury living and commercial sophistication.
             </p>
@@ -33,20 +33,20 @@ const About = () => {
         </div>
 
         {/* Main Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
           {/* Left - Content */}
-          <div className="space-y-8">
-            <h3 className="text-2xl lg:text-3xl font-light text-white leading-relaxed">
+          <div className="space-y-6">
+            <h3 className="text-lg lg:text-xl font-light text-white leading-relaxed">
               Our foundation rests upon the pillars of integrity, innovation, and an unwavering commitment to excellence.
             </h3>
 
-            <p className="text-lg text-gray-400 font-light leading-relaxed">
+            <p className="text-base text-gray-400 font-light leading-relaxed">
               From conceptual vision to final revelation, we orchestrate every element with meticulous precision.
               Our experienced artisans blend time-honored craftsmanship with cutting-edge methodologies,
               creating structures that transcend mere buildings to become enduring legacies.
             </p>
 
-            <p className="text-lg text-gray-400 font-light leading-relaxed">
+            <p className="text-base text-gray-400 font-light leading-relaxed">
               Each project represents a unique collaboration between our expertise and your aspirations,
               resulting in spaces that not only meet today's demands but anticipate tomorrow's possibilities.
             </p>
@@ -65,14 +65,14 @@ const About = () => {
         </div>
 
         {/* Achievements */}
-        <div className="border-t border-gray-700 pt-16">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div className="border-t border-gray-700 pt-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {achievements.map((achievement, index) => (
               <div key={index} className="text-center">
-                <div className="text-4xl lg:text-5xl font-light text-white mb-3">
+                <div className="text-2xl lg:text-3xl font-light text-white mb-2">
                   {achievement.number}
                 </div>
-                <div className="text-gray-400 font-light tracking-wide uppercase text-sm">
+                <div className="text-gray-400 font-light tracking-wide uppercase text-xs">
                   {achievement.label}
                 </div>
               </div>
