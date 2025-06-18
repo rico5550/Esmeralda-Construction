@@ -20,21 +20,21 @@ const Testimonials = () => {
     ];
 
     return (
-        <section className="py-24 bg-gray-800">
+        <section className="py-12 bg-gray-800">
             <div className="container mx-auto px-6 lg:px-12">
-                <div className="text-center mb-16">
-                    <h2 className="text-3xl lg:text-4xl font-light text-white mb-4">
+                <div className="text-center mb-8">
+                    <h2 className="text-2xl lg:text-3xl font-light text-white mb-2">
                         Testimonials
                     </h2>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {testimonials.map((testimonial) => (
-                        <div key={testimonial.id} className="bg-gray-900 p-8 border border-gray-700">
-                            <blockquote className="text-gray-300 leading-relaxed mb-6 font-light">
+                        <div key={testimonial.id} className="bg-gray-900 p-6 border border-gray-700">
+                            <blockquote className="text-gray-300 leading-relaxed mb-4 font-light text-sm">
                                 "{testimonial.quote}"
                             </blockquote>
-                            <cite className="text-sm font-medium text-white not-italic">
+                            <cite className="text-xs font-medium text-white not-italic">
                                 {testimonial.client}
                             </cite>
                         </div>
@@ -42,13 +42,13 @@ const Testimonials = () => {
                 </div>
 
                 {/* "As seen in" section */}
-                <div className="mt-20 text-center">
-                    <p className="text-sm text-gray-400 font-medium mb-8 tracking-wide uppercase">
+                <div className="mt-12 text-center">
+                    <p className="text-xs text-gray-400 font-medium mb-4 tracking-wide uppercase">
                         As seen in
                     </p>
 
                     <div className="text-center">
-                        <h3 className="text-2xl lg:text-3xl font-light text-white mb-4">
+                        <h3 className="text-lg lg:text-xl font-light text-white mb-2">
                             What They're Saying
                         </h3>
                     </div>
