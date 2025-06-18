@@ -1,0 +1,121 @@
+# Esmeralda Construction Website - Project Context
+
+## Project Requirements
+- **Goal**: Production-level ready website that looks good on ANY device
+- **Target Devices**: Mac, iOS, Android, Windows, Linux, Desktop, Mobile
+- **Must be**: Responsive, accessible, performant, production-ready
+
+## Tech Stack (APPROVED ✅)
+- React 18 + TypeScript
+- Vite (build tool) 
+- Tailwind CSS (mobile-first responsive)
+- Lucide React (icons)
+- ESLint + PostCSS
+
+## Current Architecture
+- Component-based structure in /src/components/
+- Main components: Header, Hero, Services, About, Contact, Footer
+- Clean separation of concerns
+- Proper TypeScript configuration
+
+## Critical Production Issues to Address
+1. **Mobile Navigation Missing**
+   - Header.tsx needs hamburger menu for mobile
+   - Touch-friendly navigation required
+   
+2. **Responsive Design Gaps**
+   - Need comprehensive breakpoint strategy (xs, sm, md, lg, xl, 2xl)
+   - Missing tablet-specific layouts
+   - No touch interaction optimizations
+
+3. **Production Config Missing**
+   - Build optimization for different environments
+   - PWA capabilities for mobile app-like experience
+   - Service worker for offline functionality
+
+4. **Accessibility Issues**
+   - Missing ARIA labels
+   - No keyboard navigation support
+   - Color contrast verification needed
+
+5. **Performance Optimizations**
+   - Lazy loading implementation
+   - Code splitting
+   - Image optimization
+
+## Development Guidelines
+- Always consider mobile-first design
+- Ensure cross-platform compatibility
+- Write production-ready code immediately
+- Focus on accessibility (WCAG 2.1 AA)
+- Optimize for performance
+
+## Design Inspiration Analysis
+**Source**: https://www.gardenstudiodesign.com/ - Luxury landscape design firm
+
+### Layout Architecture
+- **Hero Section**: Clean introduction with tagline positioning
+- **Featured Work Grid**: 3-column project showcase with hover states
+- **Social Proof**: Testimonials with client attribution
+- **Content Blocks**: Modular sections (Journal, Instagram feed)
+- **Sticky Navigation**: Clean menu with clear hierarchy
+
+### Typography Hierarchy
+- **Headlines**: Large, bold statements
+- **Taglines**: Italicized, elegant phrases ("*Creating lasting moments*")
+- **Body**: Clean, readable sans-serif
+- **Emphasis**: Strategic italic use for emotional impact
+
+### Visual Patterns
+- **Hero Images**: Full-width, high-quality project photos
+- **Grid System**: Consistent 3-column layout for projects
+- **White Space**: Generous spacing for luxury feel
+- **Hover Effects**: Subtle image overlays and transitions
+
+### Content Structure
+- **Project Showcases**: Title + brief description + stunning photo
+- **Testimonials**: Quote + client initial + location
+- **Social Integration**: Instagram feed for social proof
+- **Call-to-Actions**: "Get to know us", "Work with us", "Read the latest"
+
+### UX Patterns
+- **Progressive Disclosure**: Teaser content leading to detailed pages
+- **Social Proof**: Multiple testimonials + press mentions
+- **Trust Signals**: "As seen in" + client locations
+- **Contact Integration**: Phone number prominently displayed
+
+## Implementation Game Plan
+### Content Strategy for Esmeralda Construction
+```
+Hero: "Building Dreams with Expert Craftsmanship"
+Tagline: "*Transforming visions into lasting realities*"
+Projects: Residential renovations, commercial builds, custom homes
+Testimonials: Happy homeowners + business owners
+```
+
+### Section Mapping
+```
+✅ Hero → "Allow us to introduce ourselves" style
+✅ Featured Projects → 3 construction projects with before/after
+✅ Testimonials → Client quotes with locations
+✅ About → Company story + experience
+✅ Services → What we build
+✅ Contact → Get quote CTA
+```
+
+### Component Structure
+```tsx
+<Hero /> // Clean intro + tagline
+<FeaturedProjects /> // 3-column grid
+<Testimonials /> // Quote cards
+<Services /> // What we build
+<About /> // Company story
+<Contact /> // Get quote
+```
+
+## User Preferences
+- Casual communication style
+- Provide actual code solutions, not high-level guidance
+- Be terse and direct
+- Suggest solutions not thought of
+- Treat as expert developer 

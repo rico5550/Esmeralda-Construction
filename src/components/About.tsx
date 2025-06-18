@@ -1,83 +1,82 @@
 import React from 'react';
-import { CheckCircle, Target, Heart, Star } from 'lucide-react';
 
 const About = () => {
-  const values = [
+  const achievements = [
     {
-      icon: CheckCircle,
-      title: 'Quality Craftsmanship',
-      description: 'Every project reflects our commitment to superior materials, skilled workmanship, and attention to detail.'
+      number: "15+",
+      label: "Years of Excellence"
     },
     {
-      icon: Target,
-      title: 'On-Time Delivery',
-      description: 'We respect your time and investment with precise project management and reliable completion schedules.'
+      number: "500+",
+      label: "Projects Completed"
     },
     {
-      icon: Heart,
-      title: 'Customer First',
-      description: 'Your satisfaction drives everything we do, from initial consultation to final walkthrough and beyond.'
-    },
-    {
-      icon: Star,
-      title: 'Excellence Always',
-      description: 'We continuously exceed expectations through innovation, expertise, and unwavering commitment to excellence.'
+      number: "100%",
+      label: "Client Satisfaction"
     }
   ];
 
   return (
-    <section id="about" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Left side - Image */}
-          <div className="relative">
-            <img 
-              src="https://images.pexels.com/photos/834892/pexels-photo-834892.jpeg?auto=compress&cs=tinysrgb&w=800"
-              alt="Construction team at work"
-              className="rounded-2xl shadow-2xl w-full"
-            />
-            <div className="absolute -bottom-6 -right-6 bg-orange-600 text-white p-6 rounded-xl shadow-lg">
-              <div className="text-3xl font-bold">15+</div>
-              <div className="text-sm">Years Building Dreams</div>
-            </div>
+    <section id="about" className="py-24 bg-gray-800">
+      <div className="container mx-auto px-6 lg:px-12">
+        {/* Section Header */}
+        <div className="text-center mb-20">
+          <h2 className="text-4xl lg:text-6xl font-light text-white mb-8">
+            <em>Crafting excellence</em> through <em>visionary design</em>
+          </h2>
+          <div className="max-w-4xl mx-auto">
+            <p className="text-xl lg:text-2xl text-gray-300 font-light leading-relaxed">
+              For over 15 years, Esmeralda Construction has stood as a beacon of architectural excellence,
+              transforming dreams into tangible masterpieces that define luxury living and commercial sophistication.
+            </p>
+          </div>
+        </div>
+
+        {/* Main Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mb-20">
+          {/* Left - Content */}
+          <div className="space-y-8">
+            <h3 className="text-2xl lg:text-3xl font-light text-white leading-relaxed">
+              Our foundation rests upon the pillars of integrity, innovation, and an unwavering commitment to excellence.
+            </h3>
+
+            <p className="text-lg text-gray-400 font-light leading-relaxed">
+              From conceptual vision to final revelation, we orchestrate every element with meticulous precision.
+              Our experienced artisans blend time-honored craftsmanship with cutting-edge methodologies,
+              creating structures that transcend mere buildings to become enduring legacies.
+            </p>
+
+            <p className="text-lg text-gray-400 font-light leading-relaxed">
+              Each project represents a unique collaboration between our expertise and your aspirations,
+              resulting in spaces that not only meet today's demands but anticipate tomorrow's possibilities.
+            </p>
           </div>
 
-          {/* Right side - Content */}
-          <div>
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Building Trust Through
-              <span className="text-orange-600 block">Quality Construction</span>
-            </h2>
-            
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              For over 15 years, Esmeralda Construction has been the trusted choice for 
-              residential and commercial construction throughout the metro area. Our foundation 
-              is built on integrity, craftsmanship, and an unwavering commitment to bringing 
-              your vision to life.
-            </p>
-
-            <p className="text-lg text-gray-600 mb-10 leading-relaxed">
-              From ground-breaking to final inspection, we manage every detail with precision 
-              and care. Our experienced team combines traditional building expertise with 
-              modern techniques and materials to deliver exceptional results that stand the test of time.
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {values.map((value, index) => {
-                const IconComponent = value.icon;
-                return (
-                  <div key={index} className="flex items-start space-x-4">
-                    <div className="bg-blue-100 p-3 rounded-full flex-shrink-0">
-                      <IconComponent className="text-blue-700" size={24} />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-gray-900 mb-2">{value.title}</h4>
-                      <p className="text-gray-600 text-sm leading-relaxed">{value.description}</p>
-                    </div>
-                  </div>
-                );
-              })}
+          {/* Right - Image */}
+          <div className="relative">
+            <div className="aspect-square bg-gray-700 rounded-sm overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&h=800&q=80"
+                alt="Luxury construction excellence"
+                className="w-full h-full object-cover opacity-90"
+              />
             </div>
+          </div>
+        </div>
+
+        {/* Achievements */}
+        <div className="border-t border-gray-700 pt-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {achievements.map((achievement, index) => (
+              <div key={index} className="text-center">
+                <div className="text-4xl lg:text-5xl font-light text-white mb-3">
+                  {achievement.number}
+                </div>
+                <div className="text-gray-400 font-light tracking-wide uppercase text-sm">
+                  {achievement.label}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
