@@ -161,7 +161,7 @@ const Hero = () => {
         {/* Elegant tagline section */}
         <div className="bg-gray-900 py-24">
           <div className="container mx-auto px-6 lg:px-12 text-center">
-            <h2 className="text-4xl lg:text-6xl font-light text-white mb-6">
+            <h2 className="text-2xl lg:text-4xl font-light text-white mb-6">
               <em>Creating lasting structures</em> that extend <em>beyond</em> expectations.
             </h2>
           </div>

@@ -6,7 +6,7 @@ const FeaturedProjects = () => {
         {
             title: "Modern Family Estate",
             description: "What once was a dated 1980's ranch home, this estate now boasts a sophisticated presence that captures the essence of contemporary luxury living.",
-            image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&h=600&q=80",
+            image: "images/IMG_2381.jpg",
             id: "modern-estate"
         },
         {
@@ -18,7 +18,7 @@ const FeaturedProjects = () => {
         {
             title: "Luxury Residential Renovation",
             description: "Located in the heart of the metro area, this property is an epitome of refined elegance with timeless architectural appeal.",
-            image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&h=600&q=80",
+            image: "images/DSc09486.jpg",
             id: "luxury-renovation"
         }
     ];
@@ -39,7 +39,7 @@ const FeaturedProjects = () => {
                                 <img
                                     src={project.image}
                                     alt={project.title}
-                                    className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
+                                    className="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-105"
                                 />
                                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
                             </div>
@@ -48,7 +48,7 @@ const FeaturedProjects = () => {
                                 <h3 className="text-lg font-medium text-white group-hover:text-gray-300 transition-colors">
                                     {project.title}
                                 </h3>
-                                <p className="text-gray-400 leading-relaxed font-light text-sm">
+                                <p className="text-gray-400 leading-relaxed font-light text-base">
                                     {project.description}
                                 </p>
                             </div>
