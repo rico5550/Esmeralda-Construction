@@ -42,13 +42,13 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-12 bg-gray-50">
+    <section id="services" className="py-12 bg-warm-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10">
-          <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-3">
+          <h2 className="text-2xl lg:text-3xl font-light text-stone-800 mb-3">
             Our Construction Services
           </h2>
-          <p className="text-base text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base text-stone-600 max-w-2xl mx-auto leading-relaxed">
             From residential dreams to commercial realities, we provide comprehensive
             construction services with unmatched quality and attention to detail.
           </p>
@@ -60,24 +60,24 @@ const Services = () => {
             return (
               <div
                 key={index}
-                className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 p-6 group hover:-translate-y-1"
+                className="bg-stone-50 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 p-6 group hover:-translate-y-1 border border-stone-200"
               >
-                <div className="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-100 transition-colors">
-                  <IconComponent className="text-blue-700 group-hover:text-orange-600 transition-colors" size={24} />
+                <div className="bg-warm-200 w-12 h-12 rounded-full flex items-center justify-center mb-4 group-hover:bg-gold-200 transition-colors">
+                  <IconComponent className="text-stone-700 group-hover:text-gold-700 transition-colors" size={24} />
                 </div>
 
-                <h3 className="text-lg font-bold text-gray-900 mb-3">
+                <h3 className="text-lg font-light text-stone-800 mb-3">
                   {service.title}
                 </h3>
 
-                <p className="text-gray-600 mb-4 leading-relaxed text-sm">
+                <p className="text-stone-600 mb-4 leading-relaxed text-sm">
                   {service.description}
                 </p>
 
                 <ul className="space-y-1">
                   {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-gray-700 text-sm">
-                      <div className="w-1.5 h-1.5 bg-orange-600 rounded-full mr-2"></div>
+                    <li key={idx} className="flex items-center text-stone-700 text-sm">
+                      <div className="w-1.5 h-1.5 bg-gold-500 rounded-full mr-2"></div>
                       {feature}
                     </li>
                   ))}
@@ -88,7 +88,7 @@ const Services = () => {
         </div>
 
         <div className="text-center mt-10">
-          <button className="bg-blue-800 text-white px-6 py-3 rounded-lg hover:bg-blue-900 transition-colors font-semibold text-base">
+          <button className="bg-gold-500 text-stone-900 px-6 py-3 rounded-lg hover:bg-gold-400 transition-colors font-medium text-base">
             Request Service Quote
           </button>
         </div>
