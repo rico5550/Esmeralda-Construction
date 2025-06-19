@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle } from 'lucide-react';
+import axios from 'axios';
 
 const Contact = () => {
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -59,10 +62,246 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Form submission logic will be implemented later
-    console.log('Form submitted:', { ...formData, selectedServices });
+
+    // Validation
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.phone || selectedServices.length === 0) {
+      alert('Please fill in all required fields and select at least one service.');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      // Get selected service names
+      const selectedServiceNames = selectedServices.map(serviceId =>
+        services.find(service => service.id === serviceId)?.label
+      ).filter(Boolean).join(', ');
+
+      // Create HTML email content
+      const htmlContent = `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #f8f9fa; padding: 20px;">
+          <div style="background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+            
+            <h1 style="color: #ea5f00; text-align: center; margin-bottom: 30px; font-size: 28px;">
+              🏗️ New Quote Request - Esmeralda Construction
+            </h1>
+            
+            <div style="background-color: #ea5f00; color: white; padding: 15px; border-radius: 5px; margin-bottom: 25px;">
+              <h2 style="margin: 0; font-size: 20px;">Hello!</h2>
+              <p style="margin: 10px 0 0 0; font-size: 16px;">A new potential client, <strong>${formData.firstName} ${formData.lastName}</strong>, is requesting a comprehensive quote for construction services.</p>
+            </div>
+
+            <div style="margin-bottom: 25px;">
+              <h3 style="color: #333; border-bottom: 2px solid #ea5f00; padding-bottom: 10px; margin-bottom: 15px;">📋 Client Information</h3>
+              <table style="width: 100%; border-collapse: collapse;">
+                <tr><td style="padding: 8px 0; font-weight: bold; color: #555; width: 30%;">Name:</td><td style="padding: 8px 0; color: #333;">${formData.firstName} ${formData.lastName}</td></tr>
+                <tr><td style="padding: 8px 0; font-weight: bold; color: #555;">Email:</td><td style="padding: 8px 0; color: #333;"><a href="mailto:${formData.email}" style="color: #ea5f00; text-decoration: none;">${formData.email}</a></td></tr>
+                <tr><td style="padding: 8px 0; font-weight: bold; color: #555;">Phone:</td><td style="padding: 8px 0; color: #333;"><a href="tel:${formData.phone}" style="color: #ea5f00; text-decoration: none;">${formData.phone}</a></td></tr>
+                <tr><td style="padding: 8px 0; font-weight: bold; color: #555;">Company:</td><td style="padding: 8px 0; color: #333;">${formData.company || 'Not specified'}</td></tr>
+                <tr><td style="padding: 8px 0; font-weight: bold; color: #555;">Project Location:</td><td style="padding: 8px 0; color: #333;">${formData.address || 'Not specified'}</td></tr>
+              </table>
+            </div>
+
+            <div style="margin-bottom: 25px;">
+              <h3 style="color: #333; border-bottom: 2px solid #ea5f00; padding-bottom: 10px; margin-bottom: 15px;">🔧 Services Requested</h3>
+              <div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; border-left: 4px solid #ea5f00;">
+                <p style="margin: 0; font-size: 16px; color: #333; font-weight: 500;">${selectedServiceNames}</p>
+              </div>
+            </div>
+
+            <div style="margin-bottom: 25px;">
+              <h3 style="color: #333; border-bottom: 2px solid #ea5f00; padding-bottom: 10px; margin-bottom: 15px;">📊 Project Specifications</h3>
+              <table style="width: 100%; border-collapse: collapse;">
+                <tr><td style="padding: 8px 0; font-weight: bold; color: #555; width: 30%;">Timeline:</td><td style="padding: 8px 0; color: #333;">${formData.timeline || 'Not specified'}</td></tr>
+                <tr><td style="padding: 8px 0; font-weight: bold; color: #555;">Budget Range:</td><td style="padding: 8px 0; color: #333;">${formData.budget || 'Not specified'}</td></tr>
+              </table>
+              
+              ${formData.projectDetails ? `
+                <div style="margin-top: 15px;">
+                  <p style="font-weight: bold; color: #555; margin-bottom: 8px;">Project Details:</p>
+                  <div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; border-left: 4px solid #ea5f00;">
+                    <p style="margin: 0; color: #333; line-height: 1.6;">${formData.projectDetails}</p>
+                  </div>
+                </div>
+              ` : ''}
+            </div>
+
+            <div style="background-color: #28a745; color: white; padding: 20px; border-radius: 5px; text-align: center;">
+              <h3 style="margin: 0 0 10px 0; font-size: 18px;">📞 Next Steps</h3>
+              <p style="margin: 0; font-size: 14px; line-height: 1.6;">
+                Please respond to this client within 4 hours as promised on the website.<br>
+                Recommend scheduling a consultation call to discuss their vision in detail.<br><br>
+                <em>This lead was generated from the Esmeralda Construction website contact form.</em>
+              </p>
+            </div>
+
+          </div>
+        </div>
+      `;
+
+      // Brevo API configuration - Custom HTML approach for full control
+      const senderEmail = import.meta.env.VITE_BREVO_SENDER_EMAIL || "noreply@esmeraldaconstruction.com";
+
+      // Quote request email to YOU (the business)
+      const brevoData = {
+        sender: {
+          name: "Esmeralda Construction Website",
+          email: senderEmail
+        },
+        to: [
+          {
+            email: "ricosteven00@gmail.com", // YOUR business email
+            name: "Esmeralda Construction"
+          }
+        ],
+        subject: `🏗️ New Quote Request from ${formData.firstName} ${formData.lastName}`,
+        htmlContent: htmlContent,
+        textContent: `
+New Quote Request - Esmeralda Construction
+
+Client: ${formData.firstName} ${formData.lastName}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Company: ${formData.company || 'Not specified'}
+Project Location: ${formData.address || 'Not specified'}
+
+Services Requested: ${selectedServiceNames}
+Timeline: ${formData.timeline || 'Not specified'}
+Budget Range: ${formData.budget || 'Not specified'}
+
+Project Details:
+${formData.projectDetails || 'No additional details provided'}
+
+Please respond within 4 hours as promised on the website.
+        `
+      };
+
+      // Debug: Check if API key is loaded
+      const apiKey = import.meta.env.VITE_BREVO_API_KEY;
+      console.log('Brevo API Key present:', apiKey ? 'Yes' : 'No');
+      console.log('API Key starts with:', apiKey ? apiKey.substring(0, 10) + '...' : 'Not found');
+      console.log('Brevo request payload:', brevoData);
+
+      if (!apiKey || apiKey === 'YOUR_BREVO_API_KEY_HERE') {
+        alert('Brevo API key not configured. Please set up your .env.local file with VITE_BREVO_API_KEY');
+        throw new Error('API key not configured');
+      }
+
+      // Send email via Brevo API
+      const result = await axios.post(
+        'https://api.brevo.com/v3/smtp/email',
+        brevoData,
+        {
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'api-key': apiKey
+          }
+        }
+      );
+
+      console.log('Quote request email sent successfully to business:', result.data);
+
+      // Send thank you/confirmation email to the CUSTOMER using Brevo template
+      const templateId = import.meta.env.VITE_BREVO_TEMPLATE_ID;
+
+      const customerThankYouEmail = templateId ? {
+        // Use your Brevo template
+        to: [
+          {
+            email: formData.email, // Send to the customer who filled out the form
+            name: `${formData.firstName} ${formData.lastName}`
+          }
+        ],
+        templateId: parseInt(templateId),
+        params: {
+          // Template variables - matching your template setup
+          FIRSTNAME: formData.firstName,
+          LASTNAME: formData.lastName
+        }
+      } : {
+        // Fallback to custom HTML if no template ID
+        sender: {
+          name: "Esmeralda Construction",
+          email: senderEmail
+        },
+        to: [
+          {
+            email: formData.email,
+            name: `${formData.firstName} ${formData.lastName}`
+          }
+        ],
+        subject: "Thank you for requesting a quote",
+        htmlContent: `
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 40px 20px;">
+            <!-- Simple fallback content -->
+            <h1 style="color: #1e5532;">ESMERALDA CONSTRUCTION</h1>
+            <p>Hi ${formData.firstName},</p>
+            <p>Thank you for reaching out to us with your project details. We've received your request and will review it as soon as possible.</p>
+            <p>A member of our team will get back to you shortly to discuss your vision and next steps.</p>
+            <p>Best regards,<br>Esmeralda Construction<br>(555) 123-4567</p>
+          </div>
+        `
+      };
+
+      console.log('Sending thank you email to customer:', customerThankYouEmail);
+
+      // Send the thank you email
+      const thankYouResult = await axios.post(
+        'https://api.brevo.com/v3/smtp/email',
+        customerThankYouEmail,
+        {
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'api-key': apiKey
+          }
+        }
+      );
+
+      console.log('Thank you email sent successfully:', thankYouResult.data);
+      setSubmitStatus('success');
+
+      // Reset form
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        company: '',
+        timeline: '',
+        budget: '',
+        projectDetails: '',
+        address: ''
+      });
+      setSelectedServices([]);
+
+    } catch (error) {
+      console.error('Error sending email via Brevo:', error);
+      // Show more detailed error info for debugging
+      if (axios.isAxiosError(error)) {
+        console.error('Axios error details:', {
+          message: error.message,
+          status: error.response?.status,
+          statusText: error.response?.statusText,
+          data: error.response?.data,
+          headers: error.response?.headers
+        });
+        console.error('Full error response:', error.response);
+        // Show the actual error message from Brevo
+        const errorMessage = error.response?.data?.message || error.response?.statusText || error.message;
+        const errorCode = error.response?.data?.code || 'Unknown';
+        alert(`Brevo Error: ${errorMessage} (Code: ${errorCode})`);
+      } else {
+        alert(`Error: ${error}`);
+      }
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -311,15 +550,56 @@ const Contact = () => {
                   {/* Submit Button */}
                   <button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 flex items-center justify-center space-x-2 text-base shadow-lg hover:shadow-orange-500/25 hover:scale-105"
+                    disabled={isSubmitting}
+                    className={`w-full px-6 py-3 rounded-lg font-medium transition-all duration-300 flex items-center justify-center space-x-2 text-base shadow-lg ${isSubmitting
+                      ? 'bg-gray-600 cursor-not-allowed'
+                      : submitStatus === 'success'
+                        ? 'bg-green-600 hover:bg-green-700'
+                        : submitStatus === 'error'
+                          ? 'bg-red-600 hover:bg-red-700'
+                          : 'bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 hover:shadow-orange-500/25 hover:scale-105'
+                      } text-white`}
                   >
-                    <Send size={16} />
-                    <span>Send Quote Request</span>
+                    {isSubmitting ? (
+                      <>
+                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                        <span>Sending...</span>
+                      </>
+                    ) : submitStatus === 'success' ? (
+                      <>
+                        <CheckCircle size={16} />
+                        <span>Quote Request Sent!</span>
+                      </>
+                    ) : submitStatus === 'error' ? (
+                      <>
+                        <Send size={16} />
+                        <span>Try Again</span>
+                      </>
+                    ) : (
+                      <>
+                        <Send size={16} />
+                        <span>Send Quote Request</span>
+                      </>
+                    )}
                   </button>
 
-                  <p className="text-gray-400 text-xs text-center">
-                    We'll respond within 4 hours with a detailed consultation proposal
-                  </p>
+                  {submitStatus === 'success' && (
+                    <p className="text-green-400 text-xs text-center">
+                      ✅ Your quote request has been sent successfully! We'll respond within 4 hours.
+                    </p>
+                  )}
+
+                  {submitStatus === 'error' && (
+                    <p className="text-red-400 text-xs text-center">
+                      ❌ There was an error sending your request. Please try again or call us directly.
+                    </p>
+                  )}
+
+                  {submitStatus === 'idle' && (
+                    <p className="text-gray-400 text-xs text-center">
+                      We'll respond within 4 hours with a detailed consultation proposal
+                    </p>
+                  )}
                 </form>
               </div>
             </div>
