@@ -36,27 +36,27 @@ const About = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
           {/* Left - Content */}
           <div className="space-y-6">
-            <h3 className="text-lg lg:text-xl font-light text-white leading-relaxed">
+            <h3 className="text-xl lg:text-2xl font-light text-white leading-relaxed">
               Our foundation rests upon the pillars of integrity, innovation, and an unwavering commitment to excellence.
             </h3>
 
-            <p className="text-base text-gray-400 font-light leading-relaxed">
+            <p className="text-lg text-gray-400 font-light leading-relaxed">
               From conceptual vision to final revelation, we orchestrate every element with meticulous precision.
               Our experienced artisans blend time-honored craftsmanship with cutting-edge methodologies,
               creating structures that transcend mere buildings to become enduring legacies.
             </p>
 
-            <p className="text-base text-gray-400 font-light leading-relaxed">
+            <p className="text-lg text-gray-400 font-light leading-relaxed">
               Each project represents a unique collaboration between our expertise and your aspirations,
               resulting in spaces that not only meet today's demands but anticipate tomorrow's possibilities.
             </p>
           </div>
 
           {/* Right - Image */}
-          <div className="relative">
-            <div className="aspect-square bg-gray-700 rounded-sm overflow-hidden">
+          <div className="relative flex justify-center">
+            <div className="aspect-[4/3] bg-gray-700 rounded-sm overflow-hidden max-w-lg w-full">
               <img
-                src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&h=800&q=80"
+                src="images/DSC02322.jpg"
                 alt="Luxury construction excellence"
                 className="w-full h-full object-cover opacity-90"
               />

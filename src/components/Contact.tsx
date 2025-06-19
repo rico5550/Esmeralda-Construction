@@ -338,53 +338,53 @@ Please respond within 4 hours as promised on the website.
                 <div className="space-y-4">
                   <div className="group">
                     <div className="flex items-start space-x-3">
-                      <div className="bg-gradient-to-br from-orange-500 to-orange-600 p-2 rounded-lg group-hover:scale-110 transition-transform duration-300">
-                        <Phone size={16} className="text-white" />
+                      <div className="bg-gradient-to-br from-orange-500 to-orange-600 p-3 rounded-lg group-hover:scale-110 transition-transform duration-300">
+                        <Phone size={20} className="text-white" />
                       </div>
                       <div>
-                        <h4 className="font-medium text-white text-base mb-1">Direct Line</h4>
-                        <p className="text-gray-300 text-sm mb-1">(555) 123-4567</p>
-                        <p className="text-gray-400 text-xs">24/7 Emergency Services</p>
+                        <h4 className="font-medium text-white text-lg mb-1">Direct Line</h4>
+                        <p className="text-gray-300 text-base mb-1">(555) 123-4567</p>
+                        <p className="text-gray-400 text-sm">24/7 Emergency Services</p>
                       </div>
                     </div>
                   </div>
 
                   <div className="group">
                     <div className="flex items-start space-x-3">
-                      <div className="bg-gradient-to-br from-orange-500 to-orange-600 p-2 rounded-lg group-hover:scale-110 transition-transform duration-300">
-                        <Mail size={16} className="text-white" />
+                      <div className="bg-gradient-to-br from-orange-500 to-orange-600 p-3 rounded-lg group-hover:scale-110 transition-transform duration-300">
+                        <Mail size={20} className="text-white" />
                       </div>
                       <div>
-                        <h4 className="font-medium text-white text-base mb-1">Email</h4>
-                        <p className="text-gray-300 text-sm mb-1">info@esmeraldaconstruction.com</p>
-                        <p className="text-gray-400 text-xs">Response within 4 hours</p>
+                        <h4 className="font-medium text-white text-lg mb-1">Email</h4>
+                        <p className="text-gray-300 text-base mb-1">info@esmeraldaconstruction.com</p>
+                        <p className="text-gray-400 text-sm">Response within 4 hours</p>
                       </div>
                     </div>
                   </div>
 
                   <div className="group">
                     <div className="flex items-start space-x-3">
-                      <div className="bg-gradient-to-br from-orange-500 to-orange-600 p-2 rounded-lg group-hover:scale-110 transition-transform duration-300">
-                        <MapPin size={16} className="text-white" />
+                      <div className="bg-gradient-to-br from-orange-500 to-orange-600 p-3 rounded-lg group-hover:scale-110 transition-transform duration-300">
+                        <MapPin size={20} className="text-white" />
                       </div>
                       <div>
-                        <h4 className="font-medium text-white text-base mb-1">Service Area</h4>
-                        <p className="text-gray-300 text-sm mb-1">Greater Metro Area</p>
-                        <p className="text-gray-400 text-xs">Licensed • Insured • Bonded</p>
+                        <h4 className="font-medium text-white text-lg mb-1">Service Area</h4>
+                        <p className="text-gray-300 text-base mb-1">Greater Metro Area</p>
+                        <p className="text-gray-400 text-sm">Licensed • Insured • Bonded</p>
                       </div>
                     </div>
                   </div>
 
                   <div className="group">
                     <div className="flex items-start space-x-3">
-                      <div className="bg-gradient-to-br from-orange-500 to-orange-600 p-2 rounded-lg group-hover:scale-110 transition-transform duration-300">
-                        <Clock size={16} className="text-white" />
+                      <div className="bg-gradient-to-br from-orange-500 to-orange-600 p-3 rounded-lg group-hover:scale-110 transition-transform duration-300">
+                        <Clock size={20} className="text-white" />
                       </div>
                       <div>
-                        <h4 className="font-medium text-white text-base mb-1">Business Hours</h4>
-                        <p className="text-gray-300 text-sm">Mon-Fri: 7AM-6PM</p>
-                        <p className="text-gray-300 text-sm">Sat: 8AM-4PM</p>
-                        <p className="text-gray-400 text-xs">Sun: Emergency only</p>
+                        <h4 className="font-medium text-white text-lg mb-1">Business Hours</h4>
+                        <p className="text-gray-300 text-base">Mon-Fri: 7AM-6PM</p>
+                        <p className="text-gray-300 text-base">Sat: 8AM-4PM</p>
+                        <p className="text-gray-400 text-sm">Sun: Emergency only</p>
                       </div>
                     </div>
                   </div>
@@ -585,7 +585,7 @@ Please respond within 4 hours as promised on the website.
 
                   {submitStatus === 'success' && (
                     <p className="text-green-400 text-xs text-center">
-                      ✅ Your quote request has been sent successfully! We'll respond within 4 hours.
+                      ✅ Your quote request has been sent successfully!
                     </p>
                   )}
 
