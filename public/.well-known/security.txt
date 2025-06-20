@@ -1,0 +1,10 @@
+Contact: mailto:security@esmeraldaconstruction.com
+Contact: mailto:ricosteven00@gmail.com
+Expires: 2025-12-31T23:59:59.000Z
+Preferred-Languages: en
+Policy: https://esmeraldaconstruction.com/security-policy
+Acknowledgments: https://esmeraldaconstruction.com/security-acknowledgments
+
+# Responsible Disclosure
+# Please report security vulnerabilities responsibly
+# We appreciate security researchers and will respond within 48 hours 

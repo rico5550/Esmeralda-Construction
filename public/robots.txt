@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /.vercel/
+Disallow: /dist/
+
+# Protect admin and sensitive areas
+Disallow: /admin/
+Disallow: /config/
+Disallow: /.env*
+Disallow: /package*.json
+
+# Allow images for SEO
+Allow: /images/
+
+# Sitemap (add when you have one)
+# Sitemap: https://esmeraldaconstruction.com/sitemap.xml
+
+# Crawl delay to prevent aggressive scraping
+Crawl-delay: 1 

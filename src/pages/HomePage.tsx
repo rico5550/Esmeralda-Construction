@@ -6,6 +6,8 @@ import Services from '../components/Services';
 import About from '../components/About';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
+import PrivacyBanner from '../components/PrivacyBanner';
+import MonitoringDashboard from '../components/MonitoringDashboard';
 
 const HomePage = () => {
     return (
@@ -23,6 +25,8 @@ const HomePage = () => {
                 <Contact />
             </main>
             <Footer />
+            <PrivacyBanner />
+            <MonitoringDashboard />
         </div>
     );
 };
