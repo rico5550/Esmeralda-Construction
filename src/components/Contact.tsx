@@ -305,7 +305,7 @@ Please respond within 4 hours as promised on the website.
   };
 
   return (
-    <section id="contact" className="relative bg-cream overflow-hidden">
+    <section id="contact" className="relative bg-cream overflow-hidden" aria-labelledby="contact-heading">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-cream via-cream to-card"></div>
 
@@ -320,7 +320,7 @@ Please respond within 4 hours as promised on the website.
         <div className="container mx-auto px-6 lg:px-12">
           {/* Header Section */}
           <div className="text-center mb-12">
-            <h2 className="text-4xl lg:text-6xl font-medium text-olive mb-4">
+            <h2 id="contact-heading" className="text-4xl lg:text-6xl font-medium text-olive mb-4">
               Let's <em className="text-energy">Create</em> Something Extraordinary
             </h2>
             <p className="text-xl lg:text-2xl text-text font-medium max-w-3xl mx-auto leading-relaxed">
@@ -401,84 +401,96 @@ Please respond within 4 hours as promised on the website.
                   {/* Personal Information */}
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-text mb-1">First Name*</label>
+                      <label htmlFor="firstName" className="block text-sm font-medium text-text mb-1">First Name*</label>
                       <input
                         type="text"
+                        id="firstName"
                         name="firstName"
                         value={formData.firstName}
                         onChange={handleInputChange}
                         className="w-full px-3 py-2 rounded-lg bg-white/80 border border-olive/30 focus:border-olive focus:ring-1 focus:ring-olive/50 outline-none transition-all text-text placeholder-text/60 text-base"
                         placeholder="John"
                         required
+                        aria-describedby="firstName-desc"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-text mb-1">Last Name*</label>
+                      <label htmlFor="lastName" className="block text-sm font-medium text-text mb-1">Last Name*</label>
                       <input
                         type="text"
+                        id="lastName"
                         name="lastName"
                         value={formData.lastName}
                         onChange={handleInputChange}
                         className="w-full px-3 py-2 rounded-lg bg-white/80 border border-olive/30 focus:border-olive focus:ring-1 focus:ring-olive/50 outline-none transition-all text-text placeholder-text/60 text-base"
                         placeholder="Doe"
                         required
+                        aria-describedby="lastName-desc"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-text mb-1">Phone*</label>
+                      <label htmlFor="phone" className="block text-sm font-medium text-text mb-1">Phone*</label>
                       <input
                         type="tel"
+                        id="phone"
                         name="phone"
                         value={formData.phone}
                         onChange={handleInputChange}
                         className="w-full px-3 py-2 rounded-lg bg-white/80 border border-olive/30 focus:border-olive focus:ring-1 focus:ring-olive/50 outline-none transition-all text-text placeholder-text/60 text-base"
                         placeholder="(555) 123-4567"
                         required
+                        aria-describedby="phone-desc"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-text mb-1">Email*</label>
+                      <label htmlFor="email" className="block text-sm font-medium text-text mb-1">Email*</label>
                       <input
                         type="email"
+                        id="email"
                         name="email"
                         value={formData.email}
                         onChange={handleInputChange}
                         className="w-full px-3 py-2 rounded-lg bg-white/80 border border-olive/30 focus:border-olive focus:ring-1 focus:ring-olive/50 outline-none transition-all text-text placeholder-text/60 text-base"
                         placeholder="john@example.com"
                         required
+                        aria-describedby="email-desc"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-text mb-1">Company</label>
+                      <label htmlFor="company" className="block text-sm font-medium text-text mb-1">Company</label>
                       <input
                         type="text"
+                        id="company"
                         name="company"
                         value={formData.company}
                         onChange={handleInputChange}
                         className="w-full px-3 py-2 rounded-lg bg-white/80 border border-olive/30 focus:border-olive focus:ring-1 focus:ring-olive/50 outline-none transition-all text-text placeholder-text/60 text-base"
                         placeholder="Your Company"
+                        aria-describedby="company-desc"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-text mb-1">Project Address</label>
+                      <label htmlFor="address" className="block text-sm font-medium text-text mb-1">Project Address</label>
                       <input
                         type="text"
+                        id="address"
                         name="address"
                         value={formData.address}
                         onChange={handleInputChange}
                         className="w-full px-3 py-2 rounded-lg bg-white/80 border border-olive/30 focus:border-olive focus:ring-1 focus:ring-olive/50 outline-none transition-all text-text placeholder-text/60 text-base"
                         placeholder="Project location"
+                        aria-describedby="address-desc"
                       />
                     </div>
                   </div>
 
                   {/* Services Selection */}
-                  <div>
-                    <label className="block text-sm font-medium text-text mb-2">Services Needed*</label>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                  <fieldset>
+                    <legend className="block text-sm font-medium text-text mb-2">Services Needed*</legend>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-2" role="group" aria-labelledby="services-legend">
                       {services.map((service) => (
                         <div
                           key={service.id}
@@ -487,30 +499,43 @@ Please respond within 4 hours as promised on the website.
                             : 'border-olive/30 bg-white/40 hover:border-olive/50'
                             }`}
                           onClick={() => handleServiceToggle(service.id)}
+                          role="checkbox"
+                          aria-checked={selectedServices.includes(service.id)}
+                          tabIndex={0}
+                          onKeyDown={(e) => {
+                            if (e.key === ' ' || e.key === 'Enter') {
+                              e.preventDefault();
+                              handleServiceToggle(service.id);
+                            }
+                          }}
+                          aria-describedby={`${service.id}-desc`}
                         >
                           <div className="flex items-center space-x-2">
                             <div className={`transition-all duration-300 ${selectedServices.includes(service.id) ? 'text-olive' : 'text-text/60'
                               }`}>
-                              <CheckCircle size={14} />
+                              <CheckCircle size={14} aria-hidden="true" />
                             </div>
                             <div>
                               <h4 className="font-medium text-text text-sm leading-tight">{service.label}</h4>
                             </div>
                           </div>
+                          <div id={`${service.id}-desc`} className="sr-only">{service.description}</div>
                         </div>
                       ))}
                     </div>
-                  </div>
+                  </fieldset>
 
                   {/* Timeline and Budget */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-text mb-1">Timeline</label>
+                      <label htmlFor="timeline" className="block text-sm font-medium text-text mb-1">Timeline</label>
                       <select
+                        id="timeline"
                         name="timeline"
                         value={formData.timeline}
                         onChange={handleInputChange}
                         className="w-full px-3 py-2 rounded-lg bg-white/80 border border-olive/30 focus:border-olive focus:ring-1 focus:ring-olive/50 outline-none transition-all text-text text-base"
+                        aria-describedby="timeline-desc"
                       >
                         <option value="" className="bg-white">Select timeline</option>
                         {timelineOptions.map((option) => (
@@ -519,12 +544,14 @@ Please respond within 4 hours as promised on the website.
                       </select>
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-text mb-1">Budget Range</label>
+                      <label htmlFor="budget" className="block text-sm font-medium text-text mb-1">Budget Range</label>
                       <select
+                        id="budget"
                         name="budget"
                         value={formData.budget}
                         onChange={handleInputChange}
                         className="w-full px-3 py-2 rounded-lg bg-white/80 border border-olive/30 focus:border-olive focus:ring-1 focus:ring-olive/50 outline-none transition-all text-text text-base"
+                        aria-describedby="budget-desc"
                       >
                         <option value="" className="bg-white">Select budget range</option>
                         {budgetRanges.map((range) => (
@@ -536,15 +563,18 @@ Please respond within 4 hours as promised on the website.
 
                   {/* Project Details */}
                   <div>
-                    <label className="block text-sm font-medium text-text mb-1">Project Details</label>
+                    <label htmlFor="projectDetails" className="block text-sm font-medium text-text mb-1">Project Details</label>
                     <textarea
+                      id="projectDetails"
                       name="projectDetails"
                       value={formData.projectDetails}
                       onChange={handleInputChange}
                       rows={3}
                       className="w-full px-3 py-2 rounded-lg bg-white/80 border border-olive/30 focus:border-olive focus:ring-1 focus:ring-olive/50 outline-none transition-all resize-none text-text placeholder-text/60 text-base"
                       placeholder="Share your vision, specific requirements, design preferences, or any questions..."
+                      aria-describedby="projectDetails-desc"
                     />
+                    <div id="projectDetails-desc" className="sr-only">Optional field to provide additional details about your construction project</div>
                   </div>
 
                   {/* Submit Button */}
@@ -559,6 +589,7 @@ Please respond within 4 hours as promised on the website.
                           ? 'bg-red-600 hover:bg-red-700'
                           : 'bg-gradient-to-r from-olive to-olive-dark hover:from-olive-dark hover:to-olive hover:shadow-olive/25 hover:scale-105'
                       } text-white`}
+                    aria-describedby="submit-status"
                   >
                     {isSubmitting ? (
                       <>
@@ -583,17 +614,19 @@ Please respond within 4 hours as promised on the website.
                     )}
                   </button>
 
-                  {submitStatus === 'success' && (
-                    <p className="text-green-600 text-sm text-center font-medium">
-                      ✅ Your quote request has been sent successfully!
-                    </p>
-                  )}
+                  <div id="submit-status" role="status" aria-live="polite">
+                    {submitStatus === 'success' && (
+                      <p className="text-green-600 text-sm text-center font-medium">
+                        ✅ Your quote request has been sent successfully!
+                      </p>
+                    )}
 
-                  {submitStatus === 'error' && (
-                    <p className="text-red-600 text-sm text-center font-medium">
-                      ❌ There was an error sending your request. Please try again or call us directly.
-                    </p>
-                  )}
+                    {submitStatus === 'error' && (
+                      <p className="text-red-600 text-sm text-center font-medium">
+                        ❌ There was an error sending your request. Please try again or call us directly.
+                      </p>
+                    )}
+                  </div>
 
 
                 </form>

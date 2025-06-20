@@ -122,14 +122,27 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 bg-black/90 z-50 overflow-y-auto">
+        <div
+            className="fixed inset-0 bg-black/90 z-50 overflow-y-auto"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="gallery-title"
+            aria-describedby="gallery-description"
+        >
             {/* Close button */}
             <button
                 onClick={onClose}
                 className="fixed top-6 right-6 text-white hover:text-gray-300 transition-colors z-10"
+                aria-label="Close image gallery"
             >
                 <X size={32} />
             </button>
+
+            {/* Hidden title and description for screen readers */}
+            <h2 id="gallery-title" className="sr-only">Image Gallery</h2>
+            <div id="gallery-description" className="sr-only">
+                Use arrow keys to navigate between images, or press Escape to close.
+            </div>
 
             {/* Main container - now scrollable */}
             <div className="min-h-full flex flex-col items-center justify-center py-8 px-4">
@@ -140,6 +153,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
                         onClick={prevImage}
                         className="absolute left-4 z-10 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-300"
                         disabled={images.length <= 1}
+                        aria-label="Previous image"
                     >
                         <ChevronLeft size={24} />
                     </button>
@@ -171,6 +185,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
                                 onClick={zoomIn}
                                 disabled={zoomLevel >= 4}
                                 className="bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white p-2 rounded-full transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                                aria-label="Zoom in"
                             >
                                 <ZoomIn size={20} />
                             </button>
@@ -178,6 +193,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
                                 onClick={zoomOut}
                                 disabled={zoomLevel <= 1}
                                 className="bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white p-2 rounded-full transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                                aria-label="Zoom out"
                             >
                                 <ZoomOut size={20} />
                             </button>
@@ -203,6 +219,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
                         onClick={nextImage}
                         className="absolute right-4 z-10 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-300"
                         disabled={images.length <= 1}
+                        aria-label="Next image"
                     >
                         <ChevronRight size={24} />
                     </button>

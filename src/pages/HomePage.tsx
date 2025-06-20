@@ -10,12 +10,18 @@ import Footer from '../components/Footer';
 const HomePage = () => {
     return (
         <div className="min-h-screen bg-gray-900">
+            {/* Skip Links */}
+            <a href="#main-content" className="skip-link">Skip to main content</a>
+            <a href="#contact" className="skip-link">Skip to contact form</a>
+
             <Hero />
-            <FeaturedProjects />
-            <Testimonials />
-            <Services />
-            <About />
-            <Contact />
+            <main id="main-content">
+                <FeaturedProjects />
+                <Testimonials />
+                <Services />
+                <About />
+                <Contact />
+            </main>
             <Footer />
         </div>
     );

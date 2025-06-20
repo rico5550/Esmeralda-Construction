@@ -56,11 +56,16 @@ const AccessibilityPage = () => {
                             <div className="space-y-8">
                                 <section>
                                     <h2 className="text-2xl font-semibold text-olive mb-4">1. Accessibility Features</h2>
-                                    <p className="text-text mb-4 leading-relaxed">We aim to:</p>
+                                    <p className="text-text mb-4 leading-relaxed">Our website includes:</p>
                                     <ul className="list-disc pl-6 text-text space-y-2">
-                                        <li>Use readable font sizes and clear contrast</li>
-                                        <li>Maintain keyboard navigation compatibility</li>
-                                        <li>Ensure forms and images include appropriate labels or alternative text</li>
+                                        <li>Readable font sizes and clear color contrast meeting WCAG guidelines</li>
+                                        <li>Full keyboard navigation support with visible focus indicators</li>
+                                        <li>Properly labeled forms with screen reader compatible associations</li>
+                                        <li>Alternative text for all images and meaningful content</li>
+                                        <li>Skip links for efficient navigation to main content and contact form</li>
+                                        <li>ARIA landmarks and proper semantic HTML structure</li>
+                                        <li>Screen reader announcements for form submission status</li>
+                                        <li>Accessible image gallery with proper dialog structure</li>
                                     </ul>
                                 </section>
 

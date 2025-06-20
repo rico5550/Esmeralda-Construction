@@ -156,7 +156,16 @@ const Projects = () => {
                         <div
                             key={project.id}
                             onClick={project.id === 2 ? openMenifeeGallery : undefined}
-                            className="group cursor-pointer bg-white border border-olive/20 rounded-lg overflow-hidden hover:border-olive/40 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                            onKeyDown={(e) => {
+                                if ((e.key === 'Enter' || e.key === ' ') && project.id === 2) {
+                                    e.preventDefault();
+                                    openMenifeeGallery();
+                                }
+                            }}
+                            className="group cursor-pointer bg-white border border-olive/20 rounded-lg overflow-hidden hover:border-olive/40 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-olive focus:ring-offset-2"
+                            tabIndex={project.id === 2 ? 0 : -1}
+                            role={project.id === 2 ? "button" : undefined}
+                            aria-label={project.id === 2 ? `Open gallery for ${project.title}` : undefined}
                         >
                             {/* Project Image */}
                             <div className="relative overflow-hidden">
