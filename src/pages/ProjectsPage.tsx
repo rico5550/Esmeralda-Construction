@@ -50,8 +50,15 @@ const ProjectsPage = () => {
                                 Return to Main Site
                             </Link>
                         </div>
-                        <div className="text-white/60 text-sm">
-                            © 2024 Esmeralda Construction. All rights reserved.
+                        <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
+                            <div className="text-white/60 text-sm">
+                                © 2024 Esmeralda Construction. All rights reserved.
+                            </div>
+                            <div className="flex space-x-6 text-sm">
+                                <Link to="/privacy" className="text-white/60 hover:text-energy transition-colors">Privacy Policy</Link>
+                                <Link to="/terms" className="text-white/60 hover:text-energy transition-colors">Terms of Service</Link>
+                                <Link to="/accessibility" className="text-white/60 hover:text-energy transition-colors">Accessibility</Link>
+                            </div>
                         </div>
                     </div>
                 </div>
