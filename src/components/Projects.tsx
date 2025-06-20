@@ -29,8 +29,73 @@ const Projects = () => {
         'x-9.jpg', 'x-10.jpg', 'x-11.jpg', 'x-12.jpg', 'x-13.jpg', 'x-14.jpg', 'x-15.jpg', 'x-16.jpg', 'x-17.jpg', 'x-18.jpg', 'x-19.jpg'
     ].map(img => `images/Menifee_CA_ID_2/${img}`);
 
+    // Generate array of images for Santa_Fe_ID_1 folder
+    const santaFeImages = [
+        'IMG_2118.jpeg', 'IMG_2125.jpeg', 'IMG_2139.jpeg', 'IMG_2185.jpeg', 'IMG_2188.jpeg', 'IMG_2195.jpeg',
+        'IMG_2202.jpeg', 'IMG_2356.JPG', 'IMG_2367.JPG', 'IMG_2368.JPG', 'IMG_2372.JPG', 'IMG_2381.JPG',
+        'IMG_2387.JPG', 'IMG_2390.JPG'
+    ].map(img => `images/Santa_Fe_ID_1/${img}`);
+
+    // Generate array of images for Sunforest_ID_3 folder
+    const sunforestImages = [
+        'DJI_0277.jpg', 'DJI_0279.jpg', 'DJI_0281.jpg', 'DJI_0283.jpg', 'DJI_0289.jpg', 'DJI_0291.jpg', 'DJI_0292.jpg',
+        'DSC09217.jpg', 'DSC09220.jpg', 'DSC09226.jpg', 'DSC09238.jpg', 'DSC09241.jpg', 'DSC09247.jpg', 'DSC09250.jpg',
+        'DSC09256.jpg', 'DSC09259.jpg', 'DSC09274.jpg', 'DSC09286.jpg', 'DSC09292.jpg', 'DSC09298.jpg', 'DSC09301.jpg',
+        'DSC09304.jpg', 'DSC09310.jpg', 'DSC09313.jpg', 'DSC09319.jpg', 'DSC09328.jpg', 'DSC09334.jpg', 'DSC09337.jpg',
+        'DSC09343.jpg', 'DSC09346.jpg', 'DSC09349.jpg', 'DSC09353.jpg', 'DSC09358.jpg', 'DSC09364.jpg', 'DSC09367.jpg',
+        'DSC09375.jpg', 'DSC09387.jpg', 'DSC09390.jpg', 'DSC09393.jpg', 'DSC09402.jpg', 'DSC09405.jpg', 'DSC09414.jpg',
+        'DSC09420.jpg', 'DSC09423.jpg', 'DSC09429.jpg', 'DSC09432.jpg', 'DSC09435.jpg', 'DSC09438.jpg', 'DSC09441.jpg',
+        'DSC09444.jpg', 'DSC09447.jpg', 'DSC09450.jpg', 'DSC09453.jpg', 'DSC09456.jpg', 'DSC09459.jpg', 'DSC09459.png',
+        'DSC09462.jpg', 'DSC09465.jpg', 'DSC09468.jpg', 'DSC09471.jpg', 'DSC09480.jpg', 'DSC09483.jpg', 'DSC09486.jpg',
+        'DSC09489.jpg', 'DSC09492.jpg'
+    ].map(img => `images/Sunforest_ID_3/${img}`);
+
+    // Generate array of images for Ascot_Hill_ID_4 folder
+    const ascotHillImages = [
+        'DJI_0417.jpg', 'DJI_0418.jpg', 'DJI_0420.jpg', 'DJI_0422.jpg',
+        'DSC01797.jpg', 'DSC01799.jpg', 'DSC01803.jpg', 'DSC01809.jpg', 'DSC01815.jpg', 'DSC01818.jpg', 'DSC01821.jpg',
+        'DSC01824.jpg', 'DSC01827.jpg', 'DSC01830.jpg', 'DSC01833.jpg', 'DSC01836.jpg', 'DSC01838.jpg', 'DSC01841.jpg',
+        'DSC01844.jpg', 'DSC01848.jpg', 'DSC01851.jpg', 'DSC01854.jpg', 'DSC01857.jpg', 'DSC01864.jpg', 'DSC01867.jpg',
+        'DSC01870.jpg', 'DSC01873.jpg', 'DSC01876.jpg', 'DSC01879.jpg', 'DSC01882.jpg', 'DSC01887.jpg', 'DSC01890.jpg',
+        'DSC01893.jpg', 'DSC01899.jpg', 'DSC01902.jpg', 'DSC01905.jpg', 'DSC01909.jpg', 'DSC01911.jpg', 'DSC01915.jpg',
+        'DSC01920.jpg', 'DSC01923.jpg', 'DSC01926.jpg', 'DSC01929.jpg', 'DSC01932.jpg', 'DSC01936.jpg', 'DSC01938.jpg',
+        'DSC01944.jpg', 'DSC01947.jpg', 'DSC01951.jpg', 'DSC01954.jpg', 'DSC01957.jpg', 'DSC01962.jpg', 'DSC01968.jpg',
+        'DSC01970.jpg', 'DSC01973.jpg', 'DSC01974.jpg', 'DSC01977.jpg', 'DSC01980.jpg'
+    ].map(img => `images/Ascot_Hill_ID_4/${img}`);
+
+    // Generate array of images for Wildomar_CA_ID_5 folder  
+    const wildomarImages = [
+        'DJI_0720.jpg', 'DJI_0721.jpg', 'DJI_0722.jpg', 'DJI_0723.jpg', 'DJI_0724.jpg', 'DJI_0726.jpg', 'DJI_0727.jpg', 'DJI_0728.jpg',
+        'DSC02151.jpg', 'DSC02157.jpg', 'DSC02160.jpg', 'DSC02175.jpg', 'DSC02178.jpg', 'DSC02181.jpg', 'DSC02184.jpg',
+        'DSC02190.jpg', 'DSC02193.jpg', 'DSC02196.jpg', 'DSC02202.jpg', 'DSC02208.jpg', 'DSC02211.jpg', 'DSC02226.jpg',
+        'DSC02229.jpg', 'DSC02235.jpg', 'DSC02238.jpg', 'DSC02247.jpg', 'DSC02250.jpg', 'DSC02253.jpg', 'DSC02259.jpg',
+        'DSC02262.jpg', 'DSC02268.jpg', 'DSC02277.jpg', 'DSC02289.jpg', 'DSC02292.jpg', 'DSC02295.jpg', 'DSC02298.jpg',
+        'DSC02304.jpg', 'DSC02310.jpg', 'DSC02316.jpg', 'DSC02322.jpg', 'DSC02325.jpg', 'DSC02328.jpg', 'DSC02331.jpg',
+        'DSC02334.jpg', 'DSC02337.jpg'
+    ].map(img => `images/Wildomar_CA_ID_5/${img}`);
+
     const openMenifeeGallery = () => {
         setGalleryImages(menifeeImages);
+        setGalleryOpen(true);
+    };
+
+    const openSantaFeGallery = () => {
+        setGalleryImages(santaFeImages);
+        setGalleryOpen(true);
+    };
+
+    const openSunforestGallery = () => {
+        setGalleryImages(sunforestImages);
+        setGalleryOpen(true);
+    };
+
+    const openAscotHillGallery = () => {
+        setGalleryImages(ascotHillImages);
+        setGalleryOpen(true);
+    };
+
+    const openWildomarGallery = () => {
+        setGalleryImages(wildomarImages);
         setGalleryOpen(true);
     };
 
@@ -77,7 +142,7 @@ const Projects = () => {
             category: "residential",
             description: "A complete kitchen transformation featuring premium materials, custom cabinetry, and modern appliances for the ultimate culinary experience.",
             longDescription: "This kitchen renovation showcases our expertise in creating functional yet beautiful spaces with high-end finishes and thoughtful design.",
-            image: "images/IMG_2139.jpeg",
+            image: "images/Ascot_Hill_ID_4/DSC01882.jpg",
             location: "Metro Area",
             year: "2023",
             size: "450 sq ft",
@@ -89,7 +154,7 @@ const Projects = () => {
             category: "commercial",
             description: "Modern office space designed for productivity and style, featuring open floor plans and contemporary finishes.",
             longDescription: "A comprehensive commercial build-out that maximizes functionality while maintaining aesthetic appeal for a growing business.",
-            image: "images/IMG_2185.jpeg",
+            image: "images/Wildomar_CA_ID_5/DSC02325.jpg",
             location: "Downtown Area",
             year: "2024",
             size: "3,500 sq ft",
@@ -155,17 +220,27 @@ const Projects = () => {
                     {filteredProjects.map((project) => (
                         <div
                             key={project.id}
-                            onClick={project.id === 2 ? openMenifeeGallery : undefined}
+                            onClick={project.id === 1 ? openSantaFeGallery : project.id === 2 ? openMenifeeGallery : project.id === 3 ? openSunforestGallery : project.id === 4 ? openAscotHillGallery : project.id === 5 ? openWildomarGallery : undefined}
                             onKeyDown={(e) => {
-                                if ((e.key === 'Enter' || e.key === ' ') && project.id === 2) {
+                                if (e.key === 'Enter' || e.key === ' ') {
                                     e.preventDefault();
-                                    openMenifeeGallery();
+                                    if (project.id === 1) {
+                                        openSantaFeGallery();
+                                    } else if (project.id === 2) {
+                                        openMenifeeGallery();
+                                    } else if (project.id === 3) {
+                                        openSunforestGallery();
+                                    } else if (project.id === 4) {
+                                        openAscotHillGallery();
+                                    } else if (project.id === 5) {
+                                        openWildomarGallery();
+                                    }
                                 }
                             }}
                             className="group cursor-pointer bg-white border border-olive/20 rounded-lg overflow-hidden hover:border-olive/40 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-olive focus:ring-offset-2"
-                            tabIndex={project.id === 2 ? 0 : -1}
-                            role={project.id === 2 ? "button" : undefined}
-                            aria-label={project.id === 2 ? `Open gallery for ${project.title}` : undefined}
+                            tabIndex={project.id === 1 || project.id === 2 || project.id === 3 || project.id === 4 || project.id === 5 ? 0 : -1}
+                            role={project.id === 1 || project.id === 2 || project.id === 3 || project.id === 4 || project.id === 5 ? "button" : undefined}
+                            aria-label={project.id === 1 || project.id === 2 || project.id === 3 || project.id === 4 || project.id === 5 ? `Open gallery for ${project.title}` : undefined}
                         >
                             {/* Project Image */}
                             <div className="relative overflow-hidden">
