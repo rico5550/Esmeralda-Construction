@@ -79,9 +79,9 @@ const Footer = () => {
             © 2024 Esmeralda Construction. All rights reserved.
           </div>
           <div className="flex space-x-6 text-sm">
-            <a href="#" className="text-white/60 hover:text-energy transition-colors">Privacy Policy</a>
-            <a href="#" className="text-white/60 hover:text-energy transition-colors">Terms of Service</a>
-            <a href="#" className="text-white/60 hover:text-energy transition-colors">Licensing</a>
+            <Link to="/privacy" className="text-white/60 hover:text-energy transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="text-white/60 hover:text-energy transition-colors">Terms of Service</Link>
+            <Link to="/accessibility" className="text-white/60 hover:text-energy transition-colors">Accessibility</Link>
           </div>
         </div>
       </div>
